@@ -163,7 +163,7 @@ contract StakingTest is Test {
         assertGt(reward_per_token, 0, "There's a problem with reward per token calculation");
     }
 
-        // Non-owner should not be able to call notifyRewardAmount
+    // Non-owner should not be able to call notifyRewardAmount
     function test_notifyReward_nonOwner() public {
         deal(address(rewardToken), bob, 100 ether);
         vm.startPrank(bob);
@@ -275,7 +275,7 @@ contract StakingTest is Test {
     }
 
     // After finishAt has passed, lastTimeRewardApplicable should equal finishAt
-       function test_lastTimeAfterFinish() public {
+    function test_lastTimeAfterFinish() public {
         // Owner funds the staking contract with reward tokens
         deal(address(rewardToken), owner, 10 ether);
         vm.startPrank(owner);
@@ -292,5 +292,4 @@ contract StakingTest is Test {
         uint256 lastTime = staking.lastTimeRewardApplicable();
         assertEq(lastTime, staking.finishAt(), "Last time should equal finishAt after period ends");
     }
-
 }
